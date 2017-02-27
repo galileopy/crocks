@@ -60,7 +60,6 @@ test('Pred value', t => {
   const p = Pred(f)
 
   t.ok(isFunction(p.value), 'is a function')
-  t.equal(p.value()(), f(), 'provides the wrapped function')
 
   t.end()
 })
@@ -72,7 +71,7 @@ test('Pred runWith', t => {
   const result = m.runWith(false)
 
   t.ok(fn.called, 'calls the wrapped function')
-  t.equal(result, fn(),'returns result of the wrapped function' )
+  t.equal(result, !!fn(),'returns Boolean equiv result of the wrapped function' )
 
   t.end()
 })
@@ -108,7 +107,7 @@ test('Pred contramap functionality', t => {
   m.runWith(x)
 
   t.ok(spy.called, 'calls mapping function when ran')
-  t.equal(m.runWith(x), x, 'returns the result of the resulting composition')
+  t.equal(m.runWith(x), !!x, 'returns the Boolean equiv result of the resulting composition')
 
   t.end()
 })
